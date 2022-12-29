@@ -1,3 +1,5 @@
 <div class="container">
-  <p>movies works!</p>
+  <div *ngFor="let movie of movies$ | async" class="my-3">
+    <app-movie [movie]="movie"></app-movie>
+  </div>
 </div>
