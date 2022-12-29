@@ -1,1 +1,286 @@
-/* You can add global styles to this file, and also import other style files */
+// ------------------- Imports -------------------
+@import "remixicon/fonts/remixicon.css";
+@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800;900&display=swap");
+
+// ------------------- CSS Variables -------------------
+:root {
+  --gray-900: #212121;
+  --gray-800: #424242;
+  --gray-700: #616161;
+  --gray-600: #757575;
+  --gray-500: #9e9e9e;
+  --gray-400: #bdbdbd;
+  --gray-300: #e0e0e0;
+  --gray-200: #eeeeee;
+  --gray-100: #f5f5f5;
+  --gray-50: #fafafa;
+}
+
+// ------------------- Base CSS -------------------
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  height: 100%;
+  background-color: var(--gray-900);
+  color: var(--gray-50);
+  font-family: "Nunito", sans-serif;
+}
+
+body {
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+li {
+  list-style: none;
+}
+
+#root,
+#__next {
+  isolation: isolate;
+}
+
+// ------------------- Common CSS -------------------
+.container {
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
+@media (min-width: 576px) {
+  .container {
+    max-width: 540px;
+  }
+}
+@media (min-width: 768px) {
+  .container {
+    max-width: 720px;
+  }
+}
+@media (min-width: 992px) {
+  .container {
+    max-width: 960px;
+  }
+}
+@media (min-width: 1200px) {
+  .container {
+    max-width: 1140px;
+  }
+}
+@media (min-width: 1400px) {
+  .container {
+    max-width: 1320px;
+  }
+}
+
+// ------------------- Utilities -------------------
+// Flexbox
+.d-flex {
+  display: flex;
+}
+
+.justify-content-between {
+  justify-content: space-between;
+}
+
+.justify-content-center {
+  justify-content: center;
+}
+
+.align-center {
+  align-items: center;
+}
+
+// Gap
+.gap-1 {
+  gap: 0.25rem;
+}
+.gap-2 {
+  gap: 0.5rem;
+}
+.gap-3 {
+  gap: 1rem;
+}
+.gap-4 {
+  gap: 1.5rem;
+}
+
+// Font size
+.fs-1 {
+  font-size: 1rem;
+}
+.fs-2 {
+  font-size: 1.25rem;
+}
+.fs-3 {
+  font-size: 1.5rem;
+}
+.fs-4 {
+  font-size: 1.75rem;
+}
+
+// Padding
+.pt-1 {
+  padding-top: 0.25rem;
+}
+.pt-2 {
+  padding-top: 0.5rem;
+}
+.pt-3 {
+  padding-top: 1rem;
+}
+.pt-4 {
+  padding-top: 1.5rem;
+}
+.pt-5 {
+  padding-top: 3rem;
+}
+.pb {
+  padding-bottom: 0.25rem;
+}
+.pb-1 {
+  padding-bottom: 0.25rem;
+}
+.pb-2 {
+  padding-bottom: 0.5rem;
+}
+.pb-3 {
+  padding-bottom: 1rem;
+}
+.pb-4 {
+  padding-bottom: 1.5rem;
+}
+.pb-5 {
+  padding-bottom: 3rem;
+}
+.py-1 {
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
+}
+.py-2 {
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+.py-3 {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+.py-4 {
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+}
+.py-5 {
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+}
+.ps-1 {
+  padding-left: 0.25rem;
+}
+.ps-2 {
+  padding-left: 0.5rem;
+}
+.ps-3 {
+  padding-left: 1rem;
+}
+.ps-4 {
+  padding-left: 1.5rem;
+}
+.ps-5 {
+  padding-left: 3rem;
+}
+.pe-1 {
+  padding-right: 0.25rem;
+}
+.pe-2 {
+  padding-right: 0.5rem;
+}
+.pe-3 {
+  padding-right: 1rem;
+}
+.pe-4 {
+  padding-right: 1.5rem;
+}
+.pe-5 {
+  padding-right: 3rem;
+}
+.px-1 {
+  padding-left: 0.25rem;
+  padding-right: 0.25rem;
+}
+.px-2 {
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+}
+.px-3 {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+.px-4 {
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+.px-5 {
+  padding-left: 3rem;
+  padding-right: 3rem;
+}
+
+// Buttons
+.btn {
+  cursor: pointer;
+  border: none;
+  outline: none;
+  padding: 0.05rem 1rem;
+  border-radius: 2rem;
+  background-color: var(--gray-50);
+}
+
+.btn:hover {
+  background-color: var(--gray-300);
+}
+
+.btn-icon {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
