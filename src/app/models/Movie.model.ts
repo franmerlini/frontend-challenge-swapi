@@ -1,10 +1,10 @@
 export interface Movie {
   title: string;
   episode_id: number;
-  openingCrawl: string;
+  opening_crawl: string;
   director: string;
   producer: string;
-  releaseDate: string;
+  release_date: string;
   characters: string[];
   planets: string[];
   starships: string[];

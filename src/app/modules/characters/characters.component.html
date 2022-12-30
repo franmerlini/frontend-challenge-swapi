@@ -1,3 +1,25 @@
 <div class="container">
-  <p>characters works!</p>
+  <table class="table">
+    <tr class="table__row">
+      <th class="table__header">Nombre</th>
+      <th class="table__header">Color de ojos</th>
+      <th class="table__header">Género</th>
+      <th class="table__header">Películas asociadas</th>
+    </tr>
+
+    <tr *ngFor="let character of characters$ | async" class="table__row">
+      <td class="table__data">{{ character.name }}</td>
+      <td class="table__data">
+        <div class="tooltip">
+          <span
+            class="dot"
+            [ngStyle]="{ 'background-color': character.eye_color }"
+          ></span>
+          <span class="tooltip__text">{{ character.eye_color }}</span>
+        </div>
+      </td>
+      <td class="table__data">{{ character.gender | uppercase }}</td>
+      <td class="table__data">{{ character.films }}</td>
+    </tr>
+  </table>
 </div>
