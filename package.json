@@ -21,6 +21,7 @@
     "@ngrx/effects": "^15.1.0",
     "@ngrx/store": "^15.1.0",
     "@ngrx/store-devtools": "^15.1.0",
+    "ngx-spinner": "^15.0.1",
     "remixicon": "^2.5.0",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",
