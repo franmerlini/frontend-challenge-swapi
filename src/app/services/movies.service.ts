@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map, Observable } from 'rxjs';
-import { FlimsResponse, Movie } from '../models';
+import { FlimsResponse, Movie } from '../models/domain';
 
 @Injectable({
   providedIn: 'root',

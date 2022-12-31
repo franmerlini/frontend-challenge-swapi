@@ -1,4 +1,4 @@
-import { Character } from './Character.model';
+import { Character } from './character.model';
 
 export interface PeopleResponse {
   count: number;

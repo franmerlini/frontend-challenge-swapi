@@ -1,4 +1,4 @@
-import { Movie } from './Movie.model';
+import { Movie } from './movie.model';
 
 export interface FlimsResponse {
   count: number;

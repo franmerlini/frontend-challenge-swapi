@@ -1,8 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map, Observable } from 'rxjs';
-import { Character, PeopleResponse } from '../models';
-import { MoviesService } from './movies.service';
+import { Character, PeopleResponse } from '../models/domain';
 
 @Injectable({
   providedIn: 'root',
@@ -10,7 +9,7 @@ import { MoviesService } from './movies.service';
 export class CharactersService {
   private api_url = 'https://swapi.dev/api/people';
 
-  constructor(private http: HttpClient, private moviesService: MoviesService) {}
+  constructor(private http: HttpClient) {}
 
   getCharacters(): Observable<Character[]> {
     return this.http

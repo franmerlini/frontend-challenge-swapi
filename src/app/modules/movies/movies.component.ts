@@ -1,15 +1,31 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { Movie } from 'src/app/models';
-import { MoviesService } from 'src/app/services';
+import { Movie } from 'src/app/models/domain';
+import { State } from 'src/app/models/state';
+import { MoviesActions } from 'src/app/state/actions';
+import { MoviesSelectors } from 'src/app/state/selectors';
 
 @Component({
   selector: 'app-movies',
   templateUrl: './movies.component.html',
   styleUrls: ['./movies.component.scss'],
 })
-export class MoviesComponent {
-  public movies$: Observable<Movie[]> = this.moviesService.getMovies();
+export class MoviesComponent implements OnInit {
+  public loadingData$: Observable<boolean> = this.store.select(
+    MoviesSelectors.selectLoadingData
+  );
+  public movies$: Observable<Movie[]> = this.store.select(
+    MoviesSelectors.selectMovies
+  );
 
-  constructor(private moviesService: MoviesService) {}
+  constructor(private readonly store: Store<State>) {}
+
+  ngOnInit(): void {
+    this.loadData();
+  }
+
+  private loadData(): void {
+    this.store.dispatch(MoviesActions.getData());
+  }
 }
