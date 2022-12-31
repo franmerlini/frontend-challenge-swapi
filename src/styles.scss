@@ -210,6 +210,14 @@ li {
   display: flex;
 }
 
+.flex-column {
+  flex-direction: column;
+}
+
+.flex-row {
+  flex-direction: row;
+}
+
 .justify-content-between {
   justify-content: space-between;
 }
@@ -220,6 +228,11 @@ li {
 
 .align-center {
   align-items: center;
+}
+
+// Text align
+.text-center {
+  text-align: center;
 }
 
 // Gap
@@ -248,6 +261,35 @@ li {
 }
 .fs-4 {
   font-size: 1.75rem;
+}
+.fs-5 {
+  font-size: 2rem;
+}
+.fs-6 {
+  font-size: 2.25rem;
+}
+.fs-7 {
+  font-size: 2.5rem;
+}
+
+// Font weight
+.fw-400 {
+  font-weight: 400;
+}
+.fw-500 {
+  font-weight: 500;
+}
+.fw-600 {
+  font-weight: 600;
+}
+.fw-700 {
+  font-weight: 700;
+}
+.fw-800 {
+  font-weight: 800;
+}
+.fw-900 {
+  font-weight: 900;
 }
 
 // Padding
@@ -519,4 +561,18 @@ li {
 }
 .bg-gray-900 {
   background-color: var(--gray-900);
+}
+
+// Width
+.w-25 {
+  width: 25%;
+}
+.w-50 {
+  width: 50%;
+}
+.w-75 {
+  width: 75%;
+}
+.w-100 {
+  width: 100%;
 }
