@@ -19,7 +19,11 @@
         </div>
       </td>
       <td class="table__data">{{ character.gender | uppercase }}</td>
-      <td class="table__data">{{ character.films }}</td>
+      <td class="table__data">
+        <p *ngFor="let film of character.films">
+          {{ (getMovie(film) | async)?.title }}
+        </p>
+      </td>
     </tr>
   </table>
 </div>
