@@ -5,8 +5,12 @@
         {{ movie.title }} | Episode {{ movie.episode_id }}
       </h3>
       <p><b>Director:</b> {{ movie.director }}</p>
-      <p><b>Personajes:</b></p>
-      <p *ngFor="let character of movie.characters">- {{ character }}</p>
+      <p>
+        <b>Personajes:</b>
+        <span *ngFor="let character of movie.characters">
+          {{ (getCharacter(character) | async)?.name }},
+        </span>
+      </p>
     </div>
   </div>
 </div>
