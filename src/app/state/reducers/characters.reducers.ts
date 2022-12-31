@@ -17,6 +17,12 @@ export const charactersReducer = createReducer(
     loadingData: true,
   })),
 
+  // DATA ALREADY EXISTS
+  on(CharactersActions.dataAlreadyExists, (state) => ({
+    ...state,
+    loadingData: false,
+  })),
+
   // SUCCESS
   on(CharactersActions.getDataSuccess, (state, { characters }) => ({
     ...state,

@@ -17,6 +17,12 @@ export const moviesReducer = createReducer(
     loadingData: true,
   })),
 
+  // DATA ALREADY EXISTS
+  on(MoviesActions.dataAlreadyExists, (state) => ({
+    ...state,
+    loadingData: false,
+  })),
+
   // SUCCESS
   on(MoviesActions.getDataSuccess, (state, { movies }) => ({
     ...state,

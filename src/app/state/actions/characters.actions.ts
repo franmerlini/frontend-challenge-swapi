@@ -4,6 +4,11 @@ import { Character } from 'src/app/models/domain';
 // GENERAL
 const getData = createAction('[Characters Component] Get data');
 
+// DATA ALREDY EXISTS
+const dataAlreadyExists = createAction(
+  '[Characters Component] Data already exists'
+);
+
 // SUCCESS
 const getDataSuccess = createAction(
   '[People API] Get data success',
@@ -18,6 +23,7 @@ const getDataError = createAction(
 
 export const CharactersActions = {
   getData,
+  dataAlreadyExists,
   getDataSuccess,
   getDataError,
 };

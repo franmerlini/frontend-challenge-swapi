@@ -4,6 +4,11 @@ import { Movie } from 'src/app/models/domain';
 // GENERAL
 const getData = createAction('[Movies Component] Get data');
 
+// DATA ALREDY EXISTS
+const dataAlreadyExists = createAction(
+  '[Movies Component] Data already exists'
+);
+
 // SUCCESS
 const getDataSuccess = createAction(
   '[Films API] Get data success',
@@ -18,6 +23,7 @@ const getDataError = createAction(
 
 export const MoviesActions = {
   getData,
+  dataAlreadyExists,
   getDataSuccess,
   getDataError,
 };

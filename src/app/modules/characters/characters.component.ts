@@ -1,6 +1,6 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { filter, map, Observable, Subscription, tap } from 'rxjs';
+import { map, Observable, Subscription } from 'rxjs';
 import { Character, Movie } from 'src/app/models/domain';
 import { State } from 'src/app/models/state';
 import { CharactersActions, MoviesActions } from 'src/app/state/actions';
@@ -11,7 +11,7 @@ import { CharactersSelectors, MoviesSelectors } from 'src/app/state/selectors';
   templateUrl: './characters.component.html',
   styleUrls: ['./characters.component.scss'],
 })
-export class CharactersComponent implements OnInit, OnDestroy {
+export class CharactersComponent implements OnInit {
   public loadingData$: Observable<boolean> = this.store.select(
     CharactersSelectors.selectLoadingData
   );
@@ -26,21 +26,8 @@ export class CharactersComponent implements OnInit, OnDestroy {
   constructor(private readonly store: Store<State>) {}
 
   ngOnInit(): void {
-    this.loadData();
-  }
-
-  private loadData(): void {
     this.store.dispatch(CharactersActions.getData());
-    this.moviesSubscription = this.movies$
-      .pipe(
-        filter((movies) => !movies.length),
-        tap(() => this.store.dispatch(MoviesActions.getData()))
-      )
-      .subscribe();
-  }
-
-  ngOnDestroy(): void {
-    this.moviesSubscription.unsubscribe();
+    this.store.dispatch(MoviesActions.getData());
   }
 
   public getMovie(url: string): Observable<Movie | undefined> {
