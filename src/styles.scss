@@ -114,7 +114,7 @@ li {
   }
 }
 
-// Cards
+// Card
 .card {
   background-color: var(--gray-800);
   border-radius: 0.5rem;
@@ -128,7 +128,7 @@ li {
   border-bottom: 1px solid var(--gray-600);
 }
 
-// Tables
+// Table
 .table {
   width: 100%;
   border-radius: 0.5rem;
@@ -150,18 +150,18 @@ li {
   text-align: center;
 }
 
-// Buttons
+// Button
 .btn {
   cursor: pointer;
   border: none;
   outline: none;
   padding: 0.05rem 1rem;
   border-radius: 2rem;
-  background-color: var(--gray-50);
+  background-color: var(--gray-300);
 }
 
 .btn:hover {
-  background-color: var(--gray-300);
+  background-color: var(--gray-50);
 }
 
 .btn-icon {
@@ -203,6 +203,15 @@ li {
 
 .tooltip:hover .tooltip__text {
   visibility: visible;
+}
+
+// Input
+.input {
+  background-color: rgba(0, 0, 0, 0);
+  border: 1px solid #fafafa;
+  border-radius: 5px;
+  padding: 0.75rem 1.25rem;
+  color: #fafafa;
 }
 
 // ------------------- Utilities -------------------
