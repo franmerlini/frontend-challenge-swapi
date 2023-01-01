@@ -3,3 +3,13 @@
   grid-template-columns: repeat(2, 1fr);
   grid-gap: 3rem;
 }
+
+.link {
+  color: #add8e6;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.link:hover {
+  color: #6a64e0;
+}

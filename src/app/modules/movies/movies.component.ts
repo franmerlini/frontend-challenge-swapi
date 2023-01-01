@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { map, Observable } from 'rxjs';
 import { Character, Movie } from 'src/app/models/domain';
 import { State } from 'src/app/models/state';
+import { getCharacterId } from 'src/app/shared/utilities';
 import { CharactersActions, MoviesActions } from 'src/app/state/actions';
 import { CharactersSelectors, MoviesSelectors } from 'src/app/state/selectors';
 
@@ -22,7 +24,10 @@ export class MoviesComponent implements OnInit {
     CharactersSelectors.selectCharacters
   );
 
-  constructor(private readonly store: Store<State>) {}
+  constructor(
+    private readonly store: Store<State>,
+    private readonly router: Router
+  ) {}
 
   ngOnInit(): void {
     this.store.dispatch(MoviesActions.getData());
@@ -33,5 +38,9 @@ export class MoviesComponent implements OnInit {
     return this.characters$.pipe(
       map((characters) => characters.find((character) => character.url === url))
     );
+  }
+
+  public findCharacter(url: string): void {
+    this.router.navigate([`/characters/${getCharacterId(url)}`]);
   }
 }

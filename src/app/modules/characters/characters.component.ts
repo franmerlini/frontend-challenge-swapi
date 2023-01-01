@@ -1,9 +1,19 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { combineLatest, map, Observable, startWith } from 'rxjs';
+import {
+  filter,
+  map,
+  merge,
+  Observable,
+  startWith,
+  switchMap,
+  tap,
+} from 'rxjs';
 import { Character, Movie } from 'src/app/models/domain';
 import { State } from 'src/app/models/state';
+import { getCharacterId } from 'src/app/shared/utilities';
 import { CharactersActions, MoviesActions } from 'src/app/state/actions';
 import { CharactersSelectors, MoviesSelectors } from 'src/app/state/selectors';
 
@@ -27,7 +37,8 @@ export class CharactersComponent implements OnInit {
 
   constructor(
     private readonly store: Store<State>,
-    private readonly fb: FormBuilder
+    private readonly fb: FormBuilder,
+    private readonly route: ActivatedRoute
   ) {}
 
   ngOnInit(): void {
@@ -48,19 +59,49 @@ export class CharactersComponent implements OnInit {
   }
 
   private startFiltering(): void {
-    const filter$: Observable<string> = this.filter.valueChanges.pipe(
+    const filterValueChanges$ = this.filter.valueChanges.pipe(
+      map((value) => value as string),
       startWith('')
     );
-    this.filteredCharacters$ = combineLatest([this.characters$, filter$]).pipe(
-      map(([characters, filter]) => {
-        return characters.filter((character) => {
-          return (
-            character.name.toLowerCase().startsWith(filter.toLowerCase()) ||
-            character.gender.toLowerCase().startsWith(filter.toLowerCase()) ||
-            character.eye_color.toLowerCase().startsWith(filter.toLowerCase())
-          );
-        });
-      })
+
+    const searchedCharacter$ = this.route.params.pipe(
+      map((params) => params['id'] as string),
+      switchMap((id) =>
+        this.characters$.pipe(
+          map(
+            (characters) =>
+              characters.find(
+                (character) => getCharacterId(character.url) === id
+              )?.name ?? ''
+          ),
+          filter((name) => !!name),
+          tap((name) => this.filter.patchValue(name))
+        )
+      )
+    );
+
+    this.filteredCharacters$ = merge(
+      filterValueChanges$,
+      searchedCharacter$
+    ).pipe(
+      switchMap((filterValue) =>
+        this.characters$.pipe(
+          map((characters) =>
+            characters.filter((character) =>
+              this.existMatch(character, filterValue)
+            )
+          )
+        )
+      )
+    );
+  }
+
+  private existMatch(character: Character, filterValue: string): boolean {
+    const { name, gender, eye_color } = character;
+    return (
+      name.toLowerCase().startsWith(filterValue.toLowerCase()) ||
+      gender.toLowerCase().startsWith(filterValue.toLowerCase()) ||
+      eye_color.toLowerCase().startsWith(filterValue.toLowerCase())
     );
   }
 

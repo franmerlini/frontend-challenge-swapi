@@ -7,9 +7,11 @@
         </h3>
         <p><b>Director:</b> {{ movie.director }}</p>
         <p>
-          <b>Personajes:</b>
+          <b>Personajes: </b>
           <span *ngFor="let character of movie.characters">
-            {{ (getCharacter(character) | async)?.name }},
+            <a class="link me-1" (click)="findCharacter(character)">{{
+              (getCharacter(character) | async)?.name
+            }}</a>
           </span>
         </p>
       </div>
