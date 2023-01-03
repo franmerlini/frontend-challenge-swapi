@@ -1,0 +1,27 @@
+<div class="d-flex justify-content-end gap-5">
+  <div class="d-flex gap-2 align-center">
+    <span>Items por página:</span>
+    <select name="pagesSelect" class="select">
+      <option
+        *ngFor="let option of itemsPerPageOptions"
+        [value]="option.value"
+        class="option"
+      >
+        {{ option.label }}
+      </option>
+    </select>
+  </div>
+
+  <div class="d-flex align-center">
+    <span>Página {{ currentPage }} de {{ totalPages }}</span>
+  </div>
+
+  <div class="d-flex align-center gap-2">
+    <button class="btn-icon">
+      <i class="ri-arrow-left-s-line"></i>
+    </button>
+    <button class="btn-icon">
+      <i class="ri-arrow-right-s-line"></i>
+    </button>
+  </div>
+</div>

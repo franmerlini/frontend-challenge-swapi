@@ -158,6 +158,9 @@ li {
   padding: 0.05rem 1rem;
   border-radius: 2rem;
   background-color: var(--gray-300);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 }
 
 .btn:hover {
@@ -165,9 +168,20 @@ li {
 }
 
 .btn-icon {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
+  cursor: pointer;
+  background-color: rgba(0, 0, 0, 0);
+  border: none;
+  outline: none;
+  height: 48px;
+  width: 48px;
+  padding: 12px;
+  border-radius: 50%;
+  color: var(--gray-50);
+  text-align: center;
+}
+
+.btn-icon:hover {
+  background-color: rgba(255, 255, 255, 0.1);
 }
 
 // Dot
@@ -208,10 +222,25 @@ li {
 // Input
 .input {
   background-color: rgba(0, 0, 0, 0);
-  border: 1px solid #fafafa;
+  border: 1px solid var(--gray-50);
   border-radius: 5px;
   padding: 0.75rem 1.25rem;
-  color: #fafafa;
+  color: var(--gray-50);
+}
+
+// Select
+
+.select {
+  background-color: rgba(0, 0, 0, 0);
+  border: 1px solid var(--gray-50);
+  border-radius: 5px;
+  padding: 0.5rem 0.75rem;
+  color: var(--gray-50);
+}
+
+.option {
+  background-color: var(--gray-900);
+  color: var(--gray-50);
 }
 
 // ------------------- Utilities -------------------
@@ -235,6 +264,9 @@ li {
 .justify-content-center {
   justify-content: center;
 }
+.justify-content-end {
+  justify-content: end;
+}
 
 .align-center {
   align-items: center;
@@ -257,6 +289,9 @@ li {
 }
 .gap-4 {
   gap: 1.5rem;
+}
+.gap-5 {
+  gap: 2rem;
 }
 
 // Font size
