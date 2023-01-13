@@ -34,6 +34,7 @@ export class CharactersComponent implements OnInit {
   );
   public form!: FormGroup;
   public filteredCharacters$!: Observable<Character[]>;
+  public page = 1;
 
   constructor(
     private readonly store: Store<State>,

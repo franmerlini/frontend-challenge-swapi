@@ -19,7 +19,12 @@
         </tr>
 
         <tr
-          *ngFor="let character of filteredCharacters$ | async"
+          *ngFor="
+            let character of filteredCharacters$
+              | async
+              | toArray
+              | paginate : { itemsPerPage: 10, currentPage: page }
+          "
           class="table__row"
         >
           <td class="table__data">{{ character.name }}</td>
@@ -42,8 +47,13 @@
       </table>
     </div>
 
-    <div class="mt-4">
-      <app-paginator></app-paginator>
+    <div class="d-flex mt-3 justify-content-end">
+      <pagination-controls
+        class="paginator"
+        (pageChange)="page = $event"
+        previousLabel=""
+        nextLabel=""
+      ></pagination-controls>
     </div>
   </div>
 </div>
