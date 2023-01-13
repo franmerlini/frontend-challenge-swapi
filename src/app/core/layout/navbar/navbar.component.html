@@ -1,21 +1,37 @@
-<div class="container d-flex align-center justify-content-between py-5">
-  <div>
+<div class="container navbar py-5">
+  <div class="navbar__logo">
     <a routerLink="home">
-      <img src="../../../../assets/img/logo.png" alt="logo" height="30px" />
+      <img
+        class="logo-img"
+        src="../../../../assets/img/logo.png"
+        alt="logo"
+        height="30px"
+      />
     </a>
   </div>
-  <ul class="d-flex justify-content-between gap-4">
-    <li class="nav-item">
-      <a routerLink="home" routerLinkActive="active">Inicio</a>
+
+  <ul
+    #navbarCollapse
+    class="d-flex justify-content-between gap-4 navbar__collapse"
+  >
+    <li class="navbar__item">
+      <a routerLink="home" routerLinkActive="active" (click)="toggle()"
+        >Inicio</a
+      >
     </li>
-    <li class="nav-item">
-      <a routerLink="movies" routerLinkActive="active">Películas</a>
+    <li class="navbar__item">
+      <a routerLink="movies" routerLinkActive="active" (click)="toggle()"
+        >Películas</a
+      >
     </li>
-    <li class="nav-item">
-      <a routerLink="characters" routerLinkActive="active">Personajes</a>
+    <li class="navbar__item">
+      <a routerLink="characters" routerLinkActive="active" (click)="toggle()"
+        >Personajes</a
+      >
     </li>
   </ul>
-  <div>
+
+  <div class="navbar__collapse">
     <a
       href="https://github.com/franmerlini/frontend-challenge-swapi"
       target="_blank"
@@ -23,5 +39,11 @@
     >
       <i class="ri-github-fill fs-3"></i>¡Mirá el repo!
     </a>
+  </div>
+
+  <div class="navbar__menu">
+    <button class="btn-menu" (click)="toggle()">
+      <i class="ri-menu-line fs-3"></i>
+    </button>
   </div>
 </div>
